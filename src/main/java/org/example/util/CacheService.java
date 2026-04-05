@@ -1,12 +1,14 @@
 package org.example.util;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.util.entity.ExchangeRateEntity;
 import org.example.model.ExchangeResponse;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CacheService {
@@ -20,7 +22,7 @@ public class CacheService {
                 repository.findByBaseCodeAndExpiryTimeGreaterThan(base, System.currentTimeMillis());
 
         if (entry.isPresent()) {
-            //log("DB Cache hit");
+            log.info("DB Cache hit");
 
             ExchangeRateEntity entity = entry.get();
 
@@ -30,7 +32,7 @@ public class CacheService {
                     .build();
         }
 
-        //log("Cache miss");
+        log.info("Cache miss");
         return null;
     }
 
@@ -48,7 +50,7 @@ public class CacheService {
     //Scheduled cleanup every 72 hrs
     @Scheduled(fixedRate = 259200000)
     public void cleanUp() {
-        //log("Cleaning expired cache");
+        log.info("Cleaning expired cache");
         repository.deleteByExpiryTimeLessThan(System.currentTimeMillis());
     }
 }

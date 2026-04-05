@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
-    <script src="js/app.js"></script>
     <style>
         * {
             margin: 0;
@@ -425,10 +424,6 @@
 
     // Populate currencies on page load
     populateCurrencies();
-
-    // Show debug info
-    const debugUrl = document.getElementById('debugUrl');
-    debugUrl.textContent = window.location.origin + '/convert';
 
     // Allow conversion on Enter key
     amountInput.addEventListener('keypress', function (e) {
