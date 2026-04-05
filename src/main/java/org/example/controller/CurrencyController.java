@@ -1,25 +1,23 @@
 package org.example.controller;
 
+import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.example.dto.ConvertRequest;
 import org.example.service.CurrencyService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class CurrencyController {
-
     private final CurrencyService currencyService;
 
-    public CurrencyController(CurrencyService currencyService) {
-        this.currencyService = currencyService;
-    }
-
     @PostMapping("/convert")
-    public String convert(@ModelAttribute ConvertRequest request, Model model) throws Exception {
-        double result = currencyService.convert(request);
-        model.addAttribute("result", result);
-        return "index";
+    public ResponseEntity<Double> convert(@RequestBody ConvertRequest request) {
+        Double result = currencyService.convert(request);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

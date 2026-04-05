@@ -7,6 +7,5 @@ import java.util.Map;
 @Getter
 @Setter
 public class ExchangeResponse {
-    private Map<String, Double> rates;
-
+    private Map<String, Double> conversion_rates;
 }
