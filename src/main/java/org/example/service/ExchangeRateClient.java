@@ -1,15 +1,12 @@
-package org.example.client;
+package org.example.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.exception.ApiException;
-import org.example.model.ExchangeResponse;
+import org.example.dto.ExchangeResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.*;
-import java.net.*;
 
 @Slf4j
 @Service
@@ -27,7 +24,7 @@ public class ExchangeRateClient {
             return restTemplate.getForObject(url, ExchangeResponse.class);
 
         } catch (Exception e){
-            log.info("Api exception:", e);
+            log.error("API exception:", e);
         }
         return null;
     }

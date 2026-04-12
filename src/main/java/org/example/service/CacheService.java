@@ -1,9 +1,10 @@
-package org.example.util;
+package org.example.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.util.entity.ExchangeRateEntity;
-import org.example.model.ExchangeResponse;
+import org.example.persistence.entity.ExchangeRateEntity;
+import org.example.dto.ExchangeResponse;
+import org.example.persistence.repository.CacheRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import java.util.Optional;

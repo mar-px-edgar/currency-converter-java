@@ -17,7 +17,11 @@ public class CurrencyController {
 
     @PostMapping("/convert")
     public ResponseEntity<Double> convert(@RequestBody ConvertRequest request) {
-        Double result = currencyService.convert(request);
-        return ResponseEntity.status(HttpStatus.OK).body(result);
+        try{
+            Double result = currencyService.convert(request);
+            return ResponseEntity.status(HttpStatus.OK).body(result);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

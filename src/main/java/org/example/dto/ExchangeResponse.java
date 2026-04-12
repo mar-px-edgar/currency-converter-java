@@ -1,7 +1,6 @@
-package org.example.model;
+package org.example.dto;
 
 import lombok.*;
-import org.springframework.context.annotation.Bean;
 
 import java.util.Map;
 

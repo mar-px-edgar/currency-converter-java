@@ -1,10 +1,8 @@
 package org.example.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.client.ExchangeRateClient;
 import org.example.dto.ConvertRequest;
-import org.example.model.ExchangeResponse;
-import org.example.util.CacheService;
+import org.example.dto.ExchangeResponse;
 import org.springframework.stereotype.Service;
 
 
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 public class CurrencyService {
     private final ExchangeRateClient client;
     private final CacheService cacheService;
-
 
     public double convert(ConvertRequest request) {
         ExchangeResponse response = cacheService.getRates(request.getFrom());

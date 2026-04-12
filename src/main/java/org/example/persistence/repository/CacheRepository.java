@@ -1,6 +1,6 @@
-package org.example.util;
+package org.example.persistence.repository;
 
-import org.example.util.entity.ExchangeRateEntity;
+import org.example.persistence.entity.ExchangeRateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
