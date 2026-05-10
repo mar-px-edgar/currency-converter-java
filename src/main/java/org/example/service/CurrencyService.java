@@ -5,7 +5,6 @@ import org.example.dto.ConvertRequest;
 import org.example.dto.ExchangeResponse;
 import org.springframework.stereotype.Service;
 
-
 @Service
 @RequiredArgsConstructor
 public class CurrencyService {
